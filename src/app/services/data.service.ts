@@ -10,7 +10,10 @@ export class DataService {
   constructor(private url : string , private http : HttpClient) { 
   }
 
- 
+  getPost(): Observable<any>{
+    return this.http.get<any>("https://jsonplaceholder.typicode.com/posts").pipe(catchError((this.handleError)));
+   }
+
   getAll(): Observable<any>{
    return this.http.get<any>(this.url).pipe(catchError((this.handleError)));
   }
